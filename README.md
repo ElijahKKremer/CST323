@@ -8,7 +8,7 @@ CST323 Repository
 ## 1. Cover Sheet
  #### Test Application Development and Cloud Deployment  
  #### Elijah Kremer 
- #### October 24, 2025  
+ #### October 30, 2025  
  #### Cloud Computing Activity Report  
  #### CST 323
 
