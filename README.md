@@ -95,32 +95,21 @@ This combination was chosen for its scalability, modularity, and strong communit
 ---
 
 ## 7. Screencast Demonstration
-*Insert screencast URL here.*  
-[Screencast Demo ](https://www.loom.com/share/93825817ad484a4eaa5e78dee8044fc5)
+
+[Screencast Demo ](https://www.loom.com/share/d6c39fa0114544548ad3a83c89bdd9b6)
 
 ---
 
-## 8. Cloud Computing Research Questions
+## 8. Research Questions
 
-Cloud computing has gone through several stages of evolution, beginning with mainframes and client–server models that required heavy investment in physical infrastructure. In the early 2000s, virtualization allowed multiple applications to run on shared hardware, paving the way for Infrastructure‑as‑a‑Service (IaaS). This innovation reduced costs and improved efficiency by pooling resources. Over time, Platform‑as‑a‑Service (PaaS) and Software‑as‑a‑Service (SaaS) emerged, enabling developers and businesses to deploy applications faster without managing hardware. Today, cloud computing powers artificial intelligence, big data, mobile apps, and enterprise systems, offering scalability, flexibility, and cost efficiency that traditional on‑premises solutions cannot match.
+ Cloud Deployment Models
+The public cloud model is hosted by third‑party providers and shared across many users. Its advantages are low upfront cost, easy scalability, and broad accessibility. Its disadvantages are less control over security, possible compliance issues, and reliance on internet connectivity. The private cloud model is dedicated to a single organization. Its advantages are stronger security, more customization, and better compliance control. Its disadvantages are high cost, complex management, and limited scalability compared to public options. The hybrid cloud model combines both, allowing sensitive workloads to stay private while leveraging public resources for flexibility. Its advantages are balanced cost, flexible scaling, and better disaster recovery. Its disadvantages are integration complexity, potential data transfer costs, and the need for skilled management. The rationale is that each model trades off cost, control, and flexibility, so organizations choose based on their priorities.
 
-Netflix’s shift from on‑premises data centers to Amazon Web Services (AWS) demonstrates how an established company can leverage the cloud to solve scalability challenges. By 2010, much of its customer traffic was already running on AWS, and by 2013, Netflix aimed to have nearly all services in the cloud.
-Advantages:
-- Scalability: Netflix could auto‑scale resources to handle unpredictable spikes in streaming demand.
-- Cost efficiency: The company avoided over‑purchasing hardware and only paid for resources consumed.
-- Focus on innovation: Engineers concentrated on improving the streaming platform rather than managing infrastructure.
+SaaS Applications
+Two common SaaS applications are Microsoft 365 and Salesforce. Compared to building and hosting them yourself, advantages include reduced infrastructure costs, automatic updates and maintenance, and easy access from anywhere. Disadvantages include less customization, dependence on the vendor’s uptime and policies, and ongoing subscription costs that may add up over time. The rationale is that SaaS shifts responsibility for hosting and maintenance to the provider, which is efficient for most organizations, but it limits control and can create long‑term dependency.
 
-Disadvantages:
-- Dependency on AWS: Reliance on a third‑party provider created risks if outages occurred.
-- Loss of control: Netflix had less direct oversight of IT resources compared to on‑premises.
-- Security concerns: Storing massive amounts of customer data in the cloud increased exposure to potential breaches.
-Cloud features leveraged:
-- On‑demand elasticity to instantly scale resources.
-- Horizontally scalable architecture for rapid growth.
-- Shared resource pools for compute, storage, and networking.
-
----
-I recommend using cloud computing to deploy business applications. In the Chapter 1 prototyping example, developers were able to launch multiple virtual servers in minutes at a cost of only a few dollars per day. By contrast, the on‑premises approach required purchasing three servers at $3,000–$5,000 each, plus licensing, shipping, and installation, with a timeline of one to three months before testing could even begin. Cloud computing eliminates these delays and upfront costs, while offering the flexibility to scale resources up or down as needed. Virtual machines can be discarded easily, reducing waste and financial risk. Most importantly, the cloud enables teams to focus on building and improving applications rather than managing hardware, making it the more efficient, cost‑effective, and sustainable solution for modern businesses.
+PaaS vs. IaaS for Developers
+From a developer’s perspective, PaaS (Platform as a Service) provides a ready‑made environment with frameworks, runtime, and tools, while IaaS (Infrastructure as a Service) provides raw virtual machines and storage. Three primary differences are: (1) PaaS abstracts away server management, while IaaS requires you to configure and maintain the OS and middleware; (2) PaaS accelerates development with built‑in services like databases and deployment pipelines, while IaaS gives more flexibility but requires more setup; and (3) PaaS limits customization of the underlying stack, while IaaS allows full control over the environment. The rationale is that PaaS is ideal for rapid development and consistency, while IaaS is better when you need maximum control or have specialized requirements.
 
 
 
