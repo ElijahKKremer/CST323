@@ -8,7 +8,7 @@ CST323 Repository
 ## 1. Cover Sheet
  #### Test Application Development and Cloud Deployment  
  #### Elijah Kremer 
- #### October 30, 2025  
+ #### November 8, 2025  
  #### Cloud Computing Activity Report  
  #### CST 323
 
@@ -20,6 +20,12 @@ CST323 Repository
 
 ## Screenshot of Application
 ![Application](./src/images/Application.png)
+
+## Screenshot of Application Running on Azure
+![Application](./src/images/azure.png)
+
+## Screenshot of Application Running on Azure
+![Application](./src/images/azure2.png)
 ---
 
 ## 3. Framework and Technology Chosen
@@ -96,7 +102,7 @@ This combination was chosen for its scalability, modularity, and strong communit
 
 ## 7. Screencast Demonstration
 
-[Screencast Demo ](https://www.loom.com/share/d6c39fa0114544548ad3a83c89bdd9b6)
+[Screencast Demo ](https://www.loom.com/share/347601a867e94d79b8df0ff4aeda7820)
 
 ---
 
