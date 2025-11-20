@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head th:replace="fragments/head :: head(${user.id == null ? 'Create User' : 'Edit User'})"></head>
+  <body class="container py-4">
+    <!-- Navbar -->
+    <div th:replace="fragments/navbar :: body"></div>
+
+    <!-- Page content -->
+    <h2 th:text="${user.id == null ? 'Create User' : 'Edit User'}"></h2>
+
+    <form th:action="@{${user.id == null} ? '/users' : '/users/' + ${user.id}}"
+          th:object="${user}" method="post" class="needs-validation">
+
+      <div class="mb-3">
+        <label for="fullName" class="form-label">Full Name</label>
+        <input type="text" th:field="*{fullName}" class="form-control" id="fullName" required>
+        <div class="text-danger" th:if="${#fields.hasErrors('fullName')}"
+             th:errors="*{fullName}"></div>
+      </div>
+
+      <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" th:field="*{email}" class="form-control" id="email" required>
+        <div class="text-danger" th:if="${#fields.hasErrors('email')}"
+             th:errors="*{email}"></div>
+      </div>
+
+      <div class="mb-3">
+        <label for="role" class="form-label">Role</label>
+        <input type="text" th:field="*{role}" class="form-control" id="role" required>
+        <div class="text-danger" th:if="${#fields.hasErrors('role')}"
+             th:errors="*{role}"></div>
+      </div>
+
+      <button type="submit" class="btn btn-primary">
+        <span th:text="${user.id == null ? 'Create' : 'Update'}"></span>
+      </button>
+      <a href="/users" class="btn btn-link">Cancel</a>
+    </form>
+  </body>
+</html>

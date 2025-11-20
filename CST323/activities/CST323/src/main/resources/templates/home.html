@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head th:replace="fragments/head :: head('Cloud Test App')"></head>
+  <body class="container py-4">
+    <!-- Navbar -->
+    <div th:replace="fragments/navbar :: body"></div>
+
+    <!-- Page content -->
+    <h1 class="mb-3">Cloud Test Application</h1>
+    <p class="text-muted">A simple CRUD demo built with Spring Boot, MySQL, Thymeleaf, and Bootstrap.</p>
+
+    <div class="d-flex gap-2">
+      <a class="btn btn-primary" href="/users">Manage Users</a>
+      <a class="btn btn-outline-secondary" href="/about">About</a>
+      <a class="btn btn-outline-info" href="/products">Products</a>
+    </div>
+  </body>
+</html>
