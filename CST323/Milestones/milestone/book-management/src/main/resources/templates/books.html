@@ -1,10 +1,112 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Books</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body>
-$END$
+<body class="bg-light">
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-4">
+    <div class="container-fluid">
+        <a class="navbar-brand" th:href="@{/}">LIBRARY</a>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item"><a class="nav-link active" th:href="@{/books}">Books</a></li>
+                <li class="nav-item" sec:authorize="isAuthenticated()">
+                    <a class="nav-link" th:href="@{/profile}">My Borrowed Books</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav">
+                <li class="nav-item" sec:authorize="!isAuthenticated()">
+                    <a class="nav-link" th:href="@{/login}">Login</a>
+                </li>
+                <li class="nav-item" sec:authorize="!isAuthenticated()">
+                    <a class="nav-link" th:href="@{/register}">Register</a>
+                </li>
+                <li class="nav-item dropdown" sec:authorize="isAuthenticated()">
+                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                        <span sec:authentication="name"></span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li>
+                            <form th:action="@{/logout}" method="post" class="px-3">
+                                <button type="submit" class="btn btn-link p-0">Logout</button>
+                            </form>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+
+    <h2 class="mb-3">Book Catalog</h2>
+
+    <table class="table table-striped table-bordered align-middle">
+        <thead class="table-primary">
+        <tr>
+            <th style="width: 60px;">ID</th>
+            <th>Title</th>
+            <th>Author</th>
+            <th style="width: 220px;">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="book : ${books}">
+            <td th:text="${book.id}"></td>
+            <td th:text="${book.title}"></td>
+            <td th:text="${book.author}"></td>
+            <td>
+                <!-- borrow is visible to any logged in user -->
+                <form th:action="@{'/books/borrow/' + ${book.id}}" method="post"
+                      sec:authorize="isAuthenticated()" style="display:inline;">
+                    <button type="submit" class="btn btn-sm btn-success">
+                        Borrow
+                    </button>
+                </form>
+
+                <!-- delete ADMIN only -->
+                <form th:action="@{'/books/delete/' + ${book.id}}" method="post"
+                      sec:authorize="hasRole('ADMIN')" style="display:inline;">
+                    <button type="submit" class="btn btn-sm btn-danger ms-1">
+                        Delete
+                    </button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <!-- add book form ADMIN only -->
+    <div class="card mt-4" sec:authorize="hasRole('ADMIN')">
+        <div class="card-header">
+            Add New Book
+        </div>
+        <div class="card-body">
+            <form th:action="@{/books/add}" method="post" class="row g-3">
+                <div class="col-md-5">
+                    <label class="form-label">Title</label>
+                    <input type="text" name="title" class="form-control" required/>
+                </div>
+                <div class="col-md-5">
+                    <label class="form-label">Author</label>
+                    <input type="text" name="author" class="form-control" required/>
+                </div>
+                <div class="col-md-2 d-flex align-items-end">
+                    <button type="submit" class="btn btn-primary w-100">
+                        Add Book
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

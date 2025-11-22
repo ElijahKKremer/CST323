@@ -10,18 +10,48 @@ import jakarta.persistence.OneToMany;
 
 @Entity
 public class Book {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String title;
     private String author;
- /**
-     * List of borrow records for this book.
-     */
 
     @OneToMany(mappedBy = "book")
     private List<BorrowRecord> borrowRecords;
 
-    // getters and setters
+    // Getters and Setters
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public List<BorrowRecord> getBorrowRecords() {
+        return borrowRecords;
+    }
+
+    public void setBorrowRecords(List<BorrowRecord> borrowRecords) {
+        this.borrowRecords = borrowRecords;
+    }
 }
