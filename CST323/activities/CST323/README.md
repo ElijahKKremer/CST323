@@ -8,7 +8,7 @@ CST323 Repository
 ## 1. Cover Sheet
  #### Test Application Development and Cloud Deployment  
  #### Elijah Kremer 
- #### November 8, 2025  
+ #### November 23, 2025  
  #### Cloud Computing Activity Report  
  #### CST 323
 
@@ -26,6 +26,14 @@ CST323 Repository
 
 ## Screenshot of Application Running on Azure
 ![Application](./src/images/azure2.png)
+---
+
+## Screenshot of Application Running on AWS
+![Application](./src/images/aws.png)
+
+## Screenshot of Application Running on Google
+![Application](./src/images/google.png)
+---
 ---
 
 ## 3. Framework and Technology Chosen
@@ -102,20 +110,20 @@ This combination was chosen for its scalability, modularity, and strong communit
 
 ## 7. Screencast Demonstration
 
-[Screencast Demo ](https://www.loom.com/share/347601a867e94d79b8df0ff4aeda7820)
+[Screencast Demo ](https://www.loom.com/share/0cd7abeb996846809257ae4f936c7bb7)
 
 ---
 
 ## 8. Research Questions
 
- Cloud Deployment Models
-The public cloud model is hosted by third‑party providers and shared across many users. Its advantages are low upfront cost, easy scalability, and broad accessibility. Its disadvantages are less control over security, possible compliance issues, and reliance on internet connectivity. The private cloud model is dedicated to a single organization. Its advantages are stronger security, more customization, and better compliance control. Its disadvantages are high cost, complex management, and limited scalability compared to public options. The hybrid cloud model combines both, allowing sensitive workloads to stay private while leveraging public resources for flexibility. Its advantages are balanced cost, flexible scaling, and better disaster recovery. Its disadvantages are integration complexity, potential data transfer costs, and the need for skilled management. The rationale is that each model trades off cost, control, and flexibility, so organizations choose based on their priorities.
+a. REST API Security and Non-Functional Questions
+When consuming a REST API from a social media site, one key question is about authentication and authorization—what methods (OAuth, API keys) are required and how secure are they. Another question is about rate limits and throttling, since exceeding limits could disrupt application performance. You should also ask about data encryption, both in transit (HTTPS/TLS) and at rest, to ensure sensitive information is protected. A fourth question involves availability and uptime guarantees, since downtime could affect your app’s reliability. Finally, it’s important to ask about logging and monitoring policies, including how security incidents are reported and handled by the vendor.
 
-SaaS Applications
-Two common SaaS applications are Microsoft 365 and Salesforce. Compared to building and hosting them yourself, advantages include reduced infrastructure costs, automatic updates and maintenance, and easy access from anywhere. Disadvantages include less customization, dependence on the vendor’s uptime and policies, and ongoing subscription costs that may add up over time. The rationale is that SaaS shifts responsibility for hosting and maintenance to the provider, which is efficient for most organizations, but it limits control and can create long‑term dependency.
+b. AWS vs Google Cloud Features
+Amazon AWS and Google Cloud both offer compute services (EC2 vs Compute Engine), but Google emphasizes containerization with Kubernetes. For storage, AWS S3 and Google Cloud Storage are similar, though Google often has simpler pricing. In databases, AWS provides RDS and DynamoDB, while Google offers Cloud SQL and BigQuery, with BigQuery excelling in analytics. Both have networking services with VPCs, but Google’s global fiber network is known for speed. For serverless computing, AWS Lambda and Google Cloud Functions are comparable, though Google integrates tightly with Cloud Run. In AI/ML, AWS has SageMaker, while Google leads with Vertex AI and its research background. Both platforms emphasize security, but AWS has broader compliance certifications. For hybrid cloud, AWS Outposts competes with Google Anthos, with Anthos being more multi-cloud friendly. Pricing differs: AWS offers flexible reserved/spot pricing, while Google provides sustained-use discounts. Finally, in ease of use, AWS is powerful but complex, while Google Cloud is simpler and beginner-friendly.
 
-PaaS vs. IaaS for Developers
-From a developer’s perspective, PaaS (Platform as a Service) provides a ready‑made environment with frameworks, runtime, and tools, while IaaS (Infrastructure as a Service) provides raw virtual machines and storage. Three primary differences are: (1) PaaS abstracts away server management, while IaaS requires you to configure and maintain the OS and middleware; (2) PaaS accelerates development with built‑in services like databases and deployment pipelines, while IaaS gives more flexibility but requires more setup; and (3) PaaS limits customization of the underlying stack, while IaaS allows full control over the environment. The rationale is that PaaS is ideal for rapid development and consistency, while IaaS is better when you need maximum control or have specialized requirements.
+c. Limitations for Cloud Deployment
+One limitation is legacy system compatibility—older applications may rely on proprietary software that doesn’t run well in cloud environments. Another is regulatory compliance, where strict data residency laws may prevent storing data in certain cloud regions. A third limitation is performance requirements, since applications needing ultra-low latency may struggle in distributed cloud setups. Cost can also be a barrier, as unexpected expenses from bandwidth, storage, or compute usage may exceed budgets. Finally, vendor lock-in is a business limitation, since relying heavily on one provider’s proprietary services can make future migrations or multi-cloud strategies difficult
 
 
 
