@@ -8,7 +8,7 @@ CST323 Repository
 ## 1. Cover Sheet
  #### Test Application Development and Cloud Deployment  
  #### Elijah Kremer 
- #### November 23, 2025  
+ #### November 28, 2025  
  #### Cloud Computing Activity Report  
  #### CST 323
 
@@ -113,19 +113,79 @@ This combination was chosen for its scalability, modularity, and strong communit
 [Screencast Demo ](https://www.loom.com/share/0cd7abeb996846809257ae4f936c7bb7)
 
 ---
+## Tutorial Screenshots Topic 6
+![Application](./src/images/421.png)
+
+![Application](./src/images/422.png)
+
+![Application](./src/images/423.png)
+
+![Application](./src/images/424.png)
+
+![Application](./src/images/425.png)
 
 ## 8. Research Questions
 
-a. REST API Security and Non-Functional Questions
-When consuming a REST API from a social media site, one key question is about authentication and authorization—what methods (OAuth, API keys) are required and how secure are they. Another question is about rate limits and throttling, since exceeding limits could disrupt application performance. You should also ask about data encryption, both in transit (HTTPS/TLS) and at rest, to ensure sensitive information is protected. A fourth question involves availability and uptime guarantees, since downtime could affect your app’s reliability. Finally, it’s important to ask about logging and monitoring policies, including how security incidents are reported and handled by the vendor.
+- Docker is an open-source platform that enables developers to build, ship, and run applications inside containers.
+- It ensures applications run consistently across different environments (development, testing, production)
+- A Dockerfile is a plain text file containing instructions to build a Docker image.
+- Think of it as a recipe: it specifies the base image, dependencies, configurations, and commands to run.
+- A Docker image is a lightweight, standalone, executable package that includes everything needed to run an application: code, runtime, libraries, and settings.
+- It’s the blueprint created from a Dockerfile.
+- A Docker container is a running instance of a Docker image.
+- Containers are isolated environments that can be started, stopped, moved, and deleted independently.
+- Docker Hub is Docker’s official cloud-based registry where developers can store, share, and distribute Docker images.
+- It hosts both official images (like Ubuntu, MySQL) and community-contributed ones.
+ Five Advantages of Using Docker Containers
+- Portability – Run the same container on any system with Docker installed.
+- Consistency – Eliminates “works on my machine” issues by standardizing environments.
+- Efficiency – Containers are lightweight compared to virtual machines, using fewer resources.
+- Scalability – Easy to scale applications horizontally by running multiple containers.
+- Isolation – Each container runs independently, reducing conflicts between applications.
 
-b. AWS vs Google Cloud Features
-Amazon AWS and Google Cloud both offer compute services (EC2 vs Compute Engine), but Google emphasizes containerization with Kubernetes. For storage, AWS S3 and Google Cloud Storage are similar, though Google often has simpler pricing. In databases, AWS provides RDS and DynamoDB, while Google offers Cloud SQL and BigQuery, with BigQuery excelling in analytics. Both have networking services with VPCs, but Google’s global fiber network is known for speed. For serverless computing, AWS Lambda and Google Cloud Functions are comparable, though Google integrates tightly with Cloud Run. In AI/ML, AWS has SageMaker, while Google leads with Vertex AI and its research background. Both platforms emphasize security, but AWS has broader compliance certifications. For hybrid cloud, AWS Outposts competes with Google Anthos, with Anthos being more multi-cloud friendly. Pricing differs: AWS offers flexible reserved/spot pricing, while Google provides sustained-use discounts. Finally, in ease of use, AWS is powerful but complex, while Google Cloud is simpler and beginner-friendly.
+| Command                        | Purpose                                                                 |
+|--------------------------------|-------------------------------------------------------------------------|
+| `docker build -t myapp .`      | Builds a Docker image from a Dockerfile in the current directory.       |
+| `docker run -d -p 8080:80 myapp` | Runs a container in detached mode, mapping host port 8080 to container port 80. |
+| `docker ps`                    | Lists all running containers.                                           |
+| `docker stop <container_id>`   | Stops a running container.                                              |
+| `docker pull ubuntu`           | Downloads an image (e.g., Ubuntu) from Docker Hub.                      |
 
-c. Limitations for Cloud Deployment
-One limitation is legacy system compatibility—older applications may rely on proprietary software that doesn’t run well in cloud environments. Another is regulatory compliance, where strict data residency laws may prevent storing data in certain cloud regions. A third limitation is performance requirements, since applications needing ultra-low latency may struggle in distributed cloud setups. Cost can also be a barrier, as unexpected expenses from bandwidth, storage, or compute usage may exceed budgets. Finally, vendor lock-in is a business limitation, since relying heavily on one provider’s proprietary services can make future migrations or multi-cloud strategies difficult
+### Part 2
+- Kubernetes is an open-source container orchestration platform that automates deployment, scaling, and management of containerized applications.
+- It ensures applications run reliably across clusters of machines, handling load balancing, scaling, and self-healing.
 
+10 Key Learnings: Pods are ephemeral, ReplicaSets enforce state, Deployments manage updates, Labels organize, Services expose pods, ConfigMaps/Secrets store config, Namespaces isolate, Autoscaling adjusts pods, Control plane manages nodes, kubectl supports declarative/imperative ops.
 
+Why Use Kubernetes
+- Manages complex apps at scale, ensures HA, fault tolerance, and portability.
+5 Features: Self-healing, autoscaling, load balancing, rolling updates, service discovery.
+
+# AES Case Study: Service Level Agreements
+
+Acme eAuctions (AEA) introduced service level agreements (SLAs) when moving from a closed auction site to a new PaaS model. SLAs were tailored to each system component based on criticality:
+
+- **Seller Services**: 99.9% uptime, 1-day recovery  
+- **Buyer Services**: 99.9% uptime, 15-minute recovery  
+- **API Layer**: 99.9% uptime, ≤1 second performance, 15-minute recovery  
+- **App Store**: 99% uptime, 7-day recovery  
+- **Privacy Policy**: Published  
+
+The rationale was that buyer services are most critical for auction execution, so they received the strictest SLA. The API layer aligns with buyer services but adds a performance guarantee. Seller services are important but less critical, while the App Store is non-mission-critical and therefore has a lower SLA.
+
+Terms and conditions are published online, with consumers agreeing at sign-up and partners required to sign agreements. Large customers may negotiate stricter SLAs. Payment compliance (PCI DSS) is excluded since third parties handle transactions, though audits such as SSAE 16 or SOC2 may be added if demanded.  
+
+Three Elements in a Dockerfile
+- FROM
+- Description: Specifies the base image to build upon (e.g., FROM ubuntu:20.04).
+- Use: Defines the starting environment, such as an operating system or runtime.
+- COPY / ADD
+- Description: Copies files from the local machine into the image.
+- Use: Brings application code, configuration files, or dependencies into the container.
+- CMD / ENTRYPOINT
+- Description: Defines the default command or process that runs when the container starts.
+
+A Dockerfile defines how to build and run containers using elements like FROM, COPY, and CMD. In cloud systems, HA ensures uptime, failover provides resilience, and the number of nines quantifies reliability goals. Together, they guide infrastructure design to minimize downtime and guarantee service continuity.
 
 
 ---
