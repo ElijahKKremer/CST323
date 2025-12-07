@@ -8,7 +8,7 @@ CST323 Repository
 ## 1. Cover Sheet
  #### Test Application Development and Cloud Deployment  
  #### Elijah Kremer 
- #### November 28, 2025  
+ #### Dec 4, 2025  
  #### Cloud Computing Activity Report  
  #### CST 323
 
@@ -110,10 +110,10 @@ This combination was chosen for its scalability, modularity, and strong communit
 
 ## 7. Screencast Demonstration
 
-[Screencast Demo ](https://www.loom.com/share/0cd7abeb996846809257ae4f936c7bb7)
+[Screencast Demo ](https://www.loom.com/share/e41af9b9ccd343139a3d78e573e29bbd)
 
 ---
-## Tutorial Screenshots Topic 6
+## Tutorial Screenshots 
 ![Application](./src/images/421.png)
 
 ![Application](./src/images/422.png)
@@ -124,68 +124,146 @@ This combination was chosen for its scalability, modularity, and strong communit
 
 ![Application](./src/images/425.png)
 
+## Activity 6 Logging Proccess
+
+![Application](./src/images/425.png)
+
+![Application](./src/images/427.png)
+
+![Application](./src/images/428.png)
+
+![Application](./src/images/429.png)
+
+### Downloaded Logs 
+![Application](./src/images/432.png)
+
+### Loggly 
+![Application](./src/images/433.png)
+
+![Application](./src/images/434.png)
+
+![Application](./src/images/435.png)
+
+![Application](./src/images/435.png)
+
+![Application](./src/images/436.png)
+
+![Application](./src/images/437.png)
+
+### CodeBuild
+![Application](./src/images/438.png)
+
+![Application](./src/images/439.png)
+
+![Application](./src/images/440.png)
+
+
 ## 8. Research Questions
+Why is adding robust logging important for an application deployed to the cloud?
+- Debugging in distributed systems: Cloud environments often involve multiple instances, load balancers, and microservices. Robust logging helps trace issues across these components.
+- Monitoring and observability: Logs provide visibility into application health, performance bottlenecks, and user activity.
+- Compliance and auditing: Many industries require detailed logs for security audits, regulatory compliance, and incident response.
+- Scalability and resilience: With autoscaling and ephemeral instances, logs are often the only way to understand what happened when a container or VM disappears.
 
-- Docker is an open-source platform that enables developers to build, ship, and run applications inside containers.
-- It ensures applications run consistently across different environments (development, testing, production)
-- A Dockerfile is a plain text file containing instructions to build a Docker image.
-- Think of it as a recipe: it specifies the base image, dependencies, configurations, and commands to run.
-- A Docker image is a lightweight, standalone, executable package that includes everything needed to run an application: code, runtime, libraries, and settings.
-- It’s the blueprint created from a Dockerfile.
-- A Docker container is a running instance of a Docker image.
-- Containers are isolated environments that can be started, stopped, moved, and deleted independently.
-- Docker Hub is Docker’s official cloud-based registry where developers can store, share, and distribute Docker images.
-- It hosts both official images (like Ubuntu, MySQL) and community-contributed ones.
- Five Advantages of Using Docker Containers
-- Portability – Run the same container on any system with Docker installed.
-- Consistency – Eliminates “works on my machine” issues by standardizing environments.
-- Efficiency – Containers are lightweight compared to virtual machines, using fewer resources.
-- Scalability – Easy to scale applications horizontally by running multiple containers.
-- Isolation – Each container runs independently, reducing conflicts between applications.
+Three features of the logging framework not implemented but important for production-level applications
+- Structured JSON logging
+- Instead of plain text, logs should be in JSON format for easier parsing and integration with log aggregation tools.
+- Centralized log aggregation
+- Collect logs from all instances into a single system (e.g., CloudWatch, ELK stack) to avoid losing logs when instances terminate.
+- Asynchronous/non-blocking logging
+- Prevents logging from slowing down application performance by writing logs in a separate thread or queue.
 
-| Command                        | Purpose                                                                 |
-|--------------------------------|-------------------------------------------------------------------------|
-| `docker build -t myapp .`      | Builds a Docker image from a Dockerfile in the current directory.       |
-| `docker run -d -p 8080:80 myapp` | Runs a container in detached mode, mapping host port 8080 to container port 80. |
-| `docker ps`                    | Lists all running containers.                                           |
-| `docker stop <container_id>`   | Stops a running container.                                              |
-| `docker pull ubuntu`           | Downloads an image (e.g., Ubuntu) from Docker Hub.                      |
+Two enterprise-class logging products besides Loggly
+- Splunk → Provides advanced log analytics, dashboards, anomaly detection, and machine learning insights.
+- Datadog → Offers centralized logging, monitoring, and alerting with strong integrations for cloud-native environments.
 
-### Part 2
-- Kubernetes is an open-source container orchestration platform that automates deployment, scaling, and management of containerized applications.
-- It ensures applications run reliably across clusters of machines, handling load balancing, scaling, and self-healing.
+Purpose of setting up a log file alert
+- Detect anomalies early: Alerts notify you when specific error patterns or thresholds appear in logs (e.g., repeated NullPointerException).
+- Security monitoring: Alerts can flag suspicious activity (e.g., failed login attempts).
+- Operational visibility: Ensures teams are aware of critical issues without manually checking logs.
+- Compliance: Helps meet audit requirements by proving proactive monitoring of system events.
 
-10 Key Learnings: Pods are ephemeral, ReplicaSets enforce state, Deployments manage updates, Labels organize, Services expose pods, ConfigMaps/Secrets store config, Namespaces isolate, Autoscaling adjusts pods, Control plane manages nodes, kubectl supports declarative/imperative ops.
+Purpose of setting up an application availability alert
+- Immediate awareness of downtime: Alerts notify you when the app becomes unreachable, so you can respond quickly.
+- Customer experience protection: Minimizes the time users are impacted by outages.
+- SLA compliance: Ensures uptime guarantees are met for enterprise contracts.
+- Root cause correlation: Availability alerts combined with log alerts help pinpoint whether issues are code, infrastructure, or network related.
 
-Why Use Kubernetes
-- Manages complex apps at scale, ensures HA, fault tolerance, and portability.
-5 Features: Self-healing, autoscaling, load balancing, rolling updates, service discovery.
+What Roles Does Maven Play in CI/CD?
+- Dependency Management → automatically downloads required libraries.
+- Build Automation → compiles Java code, runs tests, packages into JAR/WAR.
+- Consistency → ensures builds are reproducible across environments.
+- Integration with CI/CD tools → Maven commands (mvn clean package) are easily scripted in buildspec files or Jenkins pipelines.
+- Artifact Management → produces deployable artifacts that can be passed to deployment stages.
 
-# AES Case Study: Service Level Agreements
+What Role Does a Source Control System Play in CI/CD?
+- Version Control → tracks changes to code, enabling rollback and history.
+- Collaboration → multiple developers can work on branches and merge changes.
+- Triggering Builds → commits/pushes trigger CI/CD pipelines automatically.
+- Auditability → every change is logged with author, timestamp, and commit message.
+- Integration → GitHub/CodeCommit connects directly to CodePipeline as the source stage.
 
-Acme eAuctions (AEA) introduced service level agreements (SLAs) when moving from a closed auction site to a new PaaS model. SLAs were tailored to each system component based on criticality:
+What Role Does a Source Control System Play in CI/CD?
+- Version Control → tracks changes to code, enabling rollback and history.
+- Collaboration → multiple developers can work on branches and merge changes.
+- Triggering Builds → commits/pushes trigger CI/CD pipelines automatically.
+- Auditability → every change is logged with author, timestamp, and commit message.
+- Integration → GitHub/CodeCommit connects directly to CodePipeline as the source stage.
 
-- **Seller Services**: 99.9% uptime, 1-day recovery  
-- **Buyer Services**: 99.9% uptime, 15-minute recovery  
-- **API Layer**: 99.9% uptime, ≤1 second performance, 15-minute recovery  
-- **App Store**: 99% uptime, 7-day recovery  
-- **Privacy Policy**: Published  
+What Role Does a Source Control System Play in CI/CD?
+- Version Control → tracks changes to code, enabling rollback and history.
+- Collaboration → multiple developers can work on branches and merge changes.
+- Triggering Builds → commits/pushes trigger CI/CD pipelines automatically.
+- Auditability → every change is logged with author, timestamp, and commit message.
+- Integration → GitHub/CodeCommit connects directly to CodePipeline as the source stage.
 
-The rationale was that buyer services are most critical for auction execution, so they received the strictest SLA. The API layer aligns with buyer services but adds a performance guarantee. Seller services are important but less critical, while the App Store is non-mission-critical and therefore has a lower SLA.
+How Did Your Chosen Build Pipeline Tool Support CI/CD?
+Using AWS CodePipeline:
+- Orchestration → connects Source (GitHub), Build (CodeBuild), and Deploy (Elastic Beanstalk).
+- Automation → runs automatically on every commit.
+- Scalability → integrates with AWS services (EB, ECS, CloudFormation).
+- Reliability → retries failed stages, logs errors in CloudWatch.
+- Artifact Handling → passes JARs from build stage to deploy stage seamlessly.
 
-Terms and conditions are published online, with consumers agreeing at sign-up and partners required to sign agreements. Large customers may negotiate stricter SLAs. Payment compliance (PCI DSS) is excluded since third parties handle transactions, though audits such as SSAE 16 or SOC2 may be added if demanded.  
+Besides Build and Deployment, Three Other Features for Robust CI/CD
+- Automated Testing → unit, integration, or regression tests run before deployment.
+- Static Code Analysis → tools like SonarQube or Checkstyle to enforce code quality.
+- Security Scanning → scan dependencies for vulnerabilities (e.g., OWASP Dependency Check).
+- Notifications (bonus) → integrate with Slack/Teams to alert developers of pipeline status.
+- Infrastructure as Code (bonus) → integrate Terraform/CloudFormation to provision environments alongside app deployment.
 
-Three Elements in a Dockerfile
-- FROM
-- Description: Specifies the base image to build upon (e.g., FROM ubuntu:20.04).
-- Use: Defines the starting environment, such as an operating system or runtime.
-- COPY / ADD
-- Description: Copies files from the local machine into the image.
-- Use: Brings application code, configuration files, or dependencies into the container.
-- CMD / ENTRYPOINT
-- Description: Defines the default command or process that runs when the container starts.
+Splunk for DevOps
+Splunk is an enterprise-class logging, analytics, and observability platform that ingests machine data from applications, servers, and infrastructure. DevOps engineers use it to:
+- Centralize logs, metrics, and traces for full-stack visibility.
+- Real-time monitoring → detect anomalies before they impact users.
+- Dashboards and alerts → visualize performance trends and set proactive thresholds.
+- Root cause analysis → quickly trace issues across distributed systems.
+- Predictive analytics → machine learning models forecast potential failures.
 
-A Dockerfile defines how to build and run containers using elements like FROM, COPY, and CMD. In cloud systems, HA ensures uptime, failover provides resilience, and the number of nines quantifies reliability goals. Together, they guide infrastructure design to minimize downtime and guarantee service continuity.
+Logging Best Practices in Cloud Applications
+Relevant log data includes:
+- Timestamps (UTC format for consistency).
+- Severity levels (INFO, WARN, ERROR).
+- Contextual metadata (user ID, request ID, service name).
+- Event details (operation performed, outcome, error codes).
+Three best practices:
+- Standardize log formats → ensure consistency across services.
+- Secure logs → avoid sensitive data exposure, encrypt at rest.
+- Make logs actionable → include enough context for debugging without noise.
+Three risks of inadequate logging:
+- Delayed troubleshooting → engineers can’t trace root causes quickly.
+- Compliance failures → missing audit trails for regulations like HIPAA or GDPR.
+- Blind spots in monitoring → undetected performance or security issues.
 
+CI/CD Pipeline Tools
+Three widely used tools:
+- Jenkins → Open-source automation server; supports plugins for builds, tests, and deployments.
+- GitLab CI/CD → Integrated into GitLab; provides pipelines, runners, and built-in DevOps lifecycle management.
+- GitHub Actions → Native to GitHub; uses YAML workflows to automate builds, tests, and deployments directly from repositories.
 
----
+Five Capabilities Defining DevOps
+- Continuous Integration (CI) → frequent code merges with automated builds/tests.
+- Continuous Delivery (CD) → automated deployment pipelines ensure rapid release cycles.
+- Automation → infrastructure provisioning, testing, and deployment reduce manual errors.
+- Monitoring & Feedback → observability tools provide real-time insights for improvement.
+- Collaboration & Culture → breaking silos between dev and ops improves agility and reliability.
