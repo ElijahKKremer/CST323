@@ -1,0 +1,45 @@
+name: Deploy Spring Boot to Azure Web App
+
+on:
+  push:
+    branches: [ "main" ]   # Runs automatically on every push to main
+  workflow_dispatch:        # Allows manual trigger from the Actions tab
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest   # GitHub-hosted Linux runner
+    env:
+      JAVA_VERSION: '17'
+      AZURE_WEBAPP_NAME: 'bookmanagement-app'   # Replace with your actual app name
+    steps:
+      # Step 1: Checkout source code
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # Step 2: Set up Java environment
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: ${{ env.JAVA_VERSION }}
+          cache: 'maven'
+
+      # Step 3: Build the Spring Boot JAR
+      - name: Build with Maven
+        run: ./mvnw -B clean package -DskipTests
+
+      # Step 4: Authenticate with Azure using Service Principal
+      - name: Login to Azure
+        uses: azure/login@v2
+        with:
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+          client-secret: ${{ secrets.AZURE_CLIENT_SECRET }}
+
+      # Step 5: Deploy the JAR to Azure Web App
+      - name: Deploy to Azure Web App
+        uses: azure/webapps-deploy@v3
+        with:
+          app-name: ${{ env.AZURE_WEBAPP_NAME }}
+          package: target/*.jar
